@@ -1,0 +1,6 @@
+div input:checked + label{
+    background:red;
+}
+div input:checked + label::before{
+    left: 25px;
+}
