@@ -2,7 +2,7 @@ import React from 'react'
 import './Navbar.css'
 const Navbar = () => {
   return (
-    <div className='flex justify-between items-center px-3 py-5 border border-red-500'>
+    <div className='flex justify-between items-center px-3 py-5'>
         <p className='text-3xl font-bold underline'>Omayera</p>
         <div className=''>
             <input id='toggle-checkbox' className='hidden' type="checkbox" />

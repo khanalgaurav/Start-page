@@ -67,9 +67,9 @@ export default function App() {
   }
 
   return (
-    <div className="mx-20 border border-blue-500 h-screen">
+    <div className="mx-20 h-screen">
       <Navbar/>
-      <div className="border border-red-600 flex flex-col items-center justify-center ">
+      <div className=" flex flex-col items-center justify-center ">
         <img className="h-32 w-32 " src={strawhat} alt="strawhat logo" />
         <p className="font-bold text-xl">Kaizoku Oni Orewa Naru !!</p>
       </div>
@@ -79,7 +79,7 @@ export default function App() {
           <p className="text-xl font-bold">Bookmarks:</p>
           <button onClick={showDelete} className={` text-3xl flex justify-center items-center`}><BiEditAlt className={`${editMode?'text-red-500':'text-black'}`}/></button>
         </section>
-        <section className="flex gap-5 w-full h-80 border border-green-500 flex-wrap justify-center py-4 px-40 items-center">
+        <section className="flex gap-5 w-full h-80 flex-wrap justify-center py-4 px-40 items-center">
           
           {linkItems.map((item,i)=>{
             return <div key={i} className="w-20 relative">
