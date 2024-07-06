@@ -2,7 +2,22 @@ import {React,useState,useEffect} from "react";
 
 const AddBookmarkForm = ({linkItems,setLinkItems,handleCancelClick,editing,linkItem,setLinkItem,editingItem,showBookmarkForm,setShowBookmarkForm}) => {
         
+        const validateForm = () =>{
+            if(linkItem.url==''){
+                alert("Enter url to Continue");
+                return false;
+            }
+            else if(linkItem.title==''){
+                alert("Enter title to Continue");
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+
         const handleInputChange = (e)=>{
+            
             setLinkItem({...linkItem,[e.target.name]: e.target.value}) 
         }
         // useEffect(()=>{
@@ -11,28 +26,31 @@ const AddBookmarkForm = ({linkItems,setLinkItems,handleCancelClick,editing,linkI
         
         const handleAddBookmarkList = (e) => {
             e.preventDefault();
-            if(editing){
-                setLinkItems(linkItems.map((items,i)=>{
-                    if(editingItem === i){
-                        return linkItem
-                    }
-                    return items;
-                }))
-                setShowBookmarkForm(true)
-            }
-            else{
-                setLinkItems([...linkItems,linkItem])
-                setLinkItem({url: 'https://',title: ''})
-                setShowBookmarkForm(true)
+            if(validateForm()){
+
+                if(editing){
+                    setLinkItems(linkItems.map((items,i)=>{
+                        if(editingItem === i){
+                            return linkItem
+                        }
+                        return items;
+                    }))
+                    setShowBookmarkForm(true)
+                }
+                else{
+                    setLinkItems([...linkItems,linkItem])
+                    setLinkItem({url: 'https://',title: ''})
+                    setShowBookmarkForm(true)
+                }
             }
         }
 
       return (
-        <div className='w-96 border border-white py-5 px-3 rounded-xl bg-white '>
+        <div className='w-96 border border-white py-5 px-3 rounded-xl bg-white dark:bg-[#2c2c2c]'>
             <form action="">
-                <label className='font-bold text-lg text-black'>URL: </label>
+                <label className='font-bold text-lg text-black dark:text-gray-300'>URL: </label>
                 <input onChange={handleInputChange} value={linkItem.url} className='bg-gray-300 w-full px-3 py-2 focus:outline-none rounded-full' type="text" name='url'/>
-                <label className='font-bold text-lg text-black'>Name: </label>
+                <label className='font-bold text-lg text-black dark:text-gray-300'>Name: </label>
                 <input onChange={handleInputChange} value={linkItem.title} className='mb-2 bg-gray-300 w-full px-3 py-2 focus:outline-none rounded-full' type="text" name='title'/>
                 <div className='flex justify-center gap-4 mt-4 items-center'>
                     {

@@ -8,7 +8,7 @@ const DateAndTime = () => {
         setCurrentTime(myTime)
     },1000);
   return (
-    <div className='flex justify-center gap-28'>
+    <div className='flex justify-center gap-28 dark:text-gray-300'>
         <div>
             <p className='text-center text-2xl underline'>Date</p>
             <p className='text-center text-4xl font-bold'>{myDate}</p>
