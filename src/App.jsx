@@ -8,7 +8,7 @@ import { RiEdit2Fill } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import DateAndTime from "./components/DateAndTime";
 import { DiVim } from "react-icons/di";
-const getLocalStorgaeItem = ()=>{
+const getLocalStorageItem = ()=>{
   let list = localStorage.getItem('linkItems')
   if(list){
     return JSON.parse(list);
@@ -16,8 +16,16 @@ const getLocalStorgaeItem = ()=>{
     return [];
   }
 }
+const getLocalStorageMode = ()=>{
+  let mode = localStorage.getItem('mode')
+  if(mode){
+    return JSON.parse(mode);
+  }else{
+    return false;
+  }
+}
 export default function App() {
-  const [linkItems, setLinkItems] = useState(getLocalStorgaeItem());
+  const [linkItems, setLinkItems] = useState(getLocalStorageItem());
   const [linkItem,setLinkItem] = useState({
     url: 'https://',
     title: ''
@@ -27,12 +35,12 @@ export default function App() {
   const [editing,setEditing] = useState(false)
   const [editingItem,setEditingItem] = useState(null)
   const [editMode,setEditMode] = useState(false)
-  const [darkMode,setDarkMode] = useState(false)
+  const [darkMode,setDarkMode] = useState(getLocalStorageMode())
 //using local storage
   useEffect(()=>{
-    localStorage.setItem('linkItems',JSON.stringify(linkItems))
-  },[linkItems])
-
+    localStorage.setItem('linkItems',JSON.stringify(linkItems));
+    localStorage.setItem('mode',JSON.stringify(darkMode))
+  },[linkItems,darkMode])
   
   // useEffect(()=>{
   //     console.log(linkItems)
